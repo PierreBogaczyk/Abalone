@@ -1,14 +1,15 @@
-// TODO update comment (add a link to a description of the game, in english)
+// TODO(DONE) update comment (add a link to a description of the game, in english)
 /**
- * This class represents an Abalone game
+ * This class represents an Abalone game 
+ * cf : https://en.wikipedia.org/wiki/Abalone_%28board_game%29
  * @author Bogaczyk Pierre / Prades Mickael
  *
  */
 public class AbaloneGame
 {
-	// TODO simplify comment
+	// TODO(DONE) simplify comment
 	/**
-	 * Board used during the current game.
+	 * Board used.
 	 */
 	private Board board;
 	
@@ -21,9 +22,10 @@ public class AbaloneGame
 		this.board=new Board();
 	}
 	
-	// TODO update comment (what is the main algorithm?)
+	// TODO(DONE) update comment (what is the main algorithm?)
 	/**
-	 * Play an Abalone game until 6 marbles of one color got pushed out of the board.
+	 * Begins the Abalone game.
+	 * Allows players to make moves until the game end.
 	 */
 	public void play()
     {
