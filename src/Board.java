@@ -26,21 +26,29 @@ public class Board
 	 */
 	private static final int MARBLES_COUNT = 14;
 
-	// TODO write comment
+	// TODO(done) write comment
+	/**
+	 * Default grid size
+	 */
 	private static final int GRID_SIZE = 9;
 
-	// TODO a comment for each field
+	// TODO(done) a comment for each field
 	/**
-	 * Count of marbles of each color on the board
+	 * Count of white marbles
 	 */
 	private int whitemarblescount;
+	
+	/**
+	 * Count of black marbles
+	 */
 	private int blackmarblescount;
 
-	// TODO fix comment
+	// TODO(done) fix comment
 	/**
+	 * game board, each cell contains information about content (@see CellState) 
 	 * grid[x][y]: x=row, y=column
 	 */
-	private Marble[][] grid;
+	private CellState[][] grid;
 
 	// TODO write a constructor
 	/**
@@ -49,23 +57,38 @@ public class Board
 	 */
 	public Board()
 	{
-		this.grid = new Marble[GRID_SIZE][GRID_SIZE];
+		this.grid = new CellState[GRID_SIZE][GRID_SIZE];
 		this.whitemarblescount = MARBLES_COUNT;
 		this.blackmarblescount = MARBLES_COUNT;
+		
+		/**
+		 * Initializes the board with empty value
+		 */
+		for (int indexcol = 0; indexcol < GRID_SIZE; indexcol++)
+		{
+			for (int indexrow = 0; indexrow < GRID_SIZE; indexrow++)
+			{
+				this.grid[indexrow][indexcol] = CellState.EMPTY;				
+			}	
+		}
+		
+		/**
+		 * Sets marbles on the board with default style
+		 */
 		for (int indexcol = 0; indexcol < 5; indexcol++)
 		{
-			this.grid[0][indexcol] = new Marble("white");
-			this.grid[8][9 - indexcol] = new Marble("black");
+			this.grid[0][indexcol] = CellState.WHITE_MARBLE;
+			this.grid[8][9 - indexcol] = CellState.BLACK_MARBLE;
 		}
 		for (int indexcol = 0; indexcol < 6; indexcol++)
 		{
-			this.grid[1][indexcol] = new Marble("white");
-			this.grid[7][9 - indexcol] = new Marble("black");
+			this.grid[1][indexcol] = CellState.WHITE_MARBLE;
+			this.grid[7][9 - indexcol] = CellState.BLACK_MARBLE;
 		}
 		for (int indexcol = 2; indexcol < 5; indexcol++)
 		{
-			this.grid[2][indexcol] = new Marble("white");
-			this.grid[6][9 - indexcol] = new Marble("black");
+			this.grid[2][indexcol] = CellState.WHITE_MARBLE;
+			this.grid[6][9 - indexcol] = CellState.BLACK_MARBLE;
 		}
 	}
 }
