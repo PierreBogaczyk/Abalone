@@ -13,60 +13,94 @@ public class AbaloneGame
 	private Board board;
 
 	/**
+	 * White player
+	 */
+	private Player whitePlayer;
+
+	/**
+	 * Black player
+	 */
+	private Player blackPlayer;
+
+	/**
 	 * Creates a new Abalone game, ready to be played (gameboard is in default
 	 * style starting configuration)
 	 */
 	public AbaloneGame()
 	{
 		this.board = new Board();
+		this.whitePlayer = new Player();
+		this.blackPlayer = new Player();
 	}
 
-	// TODO palyer must be created inside constructor, it is part of
-	// what a "ready to be played game" is called
-	/**
-	 * Creates player
-	 */
-	public void player()
-	{
-				
-	}
 	
-	// TODO clean algorithm (ask for advice)
+	
+	// TODO(done) clean algorithm (ask for advice)
+	// @formatter.off
 	/**
 	 * Allows to play an Abalone game. Allows players to make moves until the game end.
 	 * 
 	 * Algorithm :
 	 * 
-	 * initializes board
-	 * 
-	 * player round <- white player
+	 * current player is white player
 	 *  
-	 * while number of marbles of white player > 8 
-	 * 	and number of marbles of black player > 8
-	 * 		sends instruction of a player to move marbles
+	 * while (<game is not over>)
+	 * do
+	 * 		<ask current player for a move>
+	 * while (<move is not valid>)
+	 * <process move>
+	 * changes current player
 	 * 
-	 * 		gives movement instruction 
-	 * 
-	 * 		modifies board with new locations of marbles
-	 * 
-	 * 		if marbles of a color is out 
-	 * 			number of marbles <- number of marbles - number of marbles out in this round
-	 * 
-	 * 		if player round == white player
-	 * 			player round <- black player
-	 * 		
-	 * 		else player round <- white player
-	 * 
-	 * 		sends to screen numbers of marbles to each color
-	 * 			
-	 * if number of marbles of white player =< 8
-	 * 		sends notification : "Black player wins this game"
-	 * 
-	 *  else sends notification : "White player wins this game"
-	 */
+	 * */
+	// @formatter.on
 	public void play()
 	{
+		Player currentPlayer = this.whitePlayer;
+		
+		while (!this.isGameOver())
+		{
+			Move move = null;
+			
+			do
+				currentPlayer.askForMove();
+			while(!this.isValidMove(move));
+			
+			this.moveMarbles(move);
+			
+			
+			currentPlayer.changeCurrentPlayer();
+		}
+	}
+	
+	/**
+	 * Change marble's locations on the board 
+	 * @param move Last move
+	 */
+	private void moveMarbles(Move move)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+	
+	/**
+	 * Check if move is valid
+	 * @param move
+	 * @return <tt>true</tt> if move is valid, <tt>false</tt> else
+	 */
+	private boolean isValidMove(Move move)
+	{
+		// TODO Auto-generated method stub
+		return true;
+	}
 
+	/**
+	 * Check if game is over
+	 * @return <tt>true</tt> if game is over, <tt>false</tt> else
+	 */
+	private boolean isGameOver()
+	{
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

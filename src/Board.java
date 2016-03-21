@@ -85,6 +85,6 @@ public class Board
 		{
 			this.grid[2][indexcol] = CellState.WHITE_MARBLE;
 			this.grid[6][9 - indexcol] = CellState.BLACK_MARBLE;
-		}
+		}	
 	}
 }
