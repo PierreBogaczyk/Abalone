@@ -21,6 +21,8 @@ public class AbaloneGame
 		this.board = new Board();
 	}
 
+	// TODO palyer must be created inside constructor, it is part of
+	// what a "ready to be played game" is called
 	/**
 	 * Creates player
 	 */
@@ -29,8 +31,7 @@ public class AbaloneGame
 				
 	}
 	
-	// TODO(done) fix comment (this is not only about beginning the game)
-	// TODO detail comment (what is the main algorithm?)
+	// TODO clean algorithm (ask for advice)
 	/**
 	 * Allows to play an Abalone game. Allows players to make moves until the game end.
 	 * 

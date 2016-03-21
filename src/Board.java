@@ -26,13 +26,11 @@ public class Board
 	 */
 	private static final int MARBLES_COUNT = 14;
 
-	// TODO(done) write comment
 	/**
 	 * Default grid size
 	 */
 	private static final int GRID_SIZE = 9;
 
-	// TODO(done) a comment for each field
 	/**
 	 * Count of white marbles
 	 */
@@ -43,14 +41,12 @@ public class Board
 	 */
 	private int blackmarblescount;
 
-	// TODO(done) fix comment
 	/**
 	 * game board, each cell contains information about content (@see CellState) 
 	 * grid[x][y]: x=row, y=column
 	 */
 	private CellState[][] grid;
 
-	// TODO write a constructor
 	/**
 	 * Creates an initialized board of Abalone (gameboard is in default style
 	 * starting configuration)
