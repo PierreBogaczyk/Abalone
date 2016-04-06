@@ -33,9 +33,7 @@ public class AbaloneGame
 		this.blackPlayer = new Player();
 	}
 
-	
-	
-	// TODO(done) clean algorithm (ask for advice)
+
 	// @formatter.off
 	/**
 	 * Allows to play an Abalone game. Allows players to make moves until the game end.
@@ -49,7 +47,7 @@ public class AbaloneGame
 	 * 		<ask current player for a move>
 	 * while (<move is not valid>)
 	 * <process move>
-	 * changes current player
+	 * <changes current player>
 	 * 
 	 * */
 	// @formatter.on
@@ -67,7 +65,7 @@ public class AbaloneGame
 			
 			this.moveMarbles(move);
 			
-			
+			// TODO (ask for advice)
 			currentPlayer.changeCurrentPlayer();
 		}
 	}
@@ -82,6 +80,7 @@ public class AbaloneGame
 		
 	}
 	
+	// TODO (ask for advice)
 	/**
 	 * Check if move is valid
 	 * @param move

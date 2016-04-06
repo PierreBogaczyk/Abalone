@@ -31,11 +31,13 @@ public class Board
 	 */
 	private static final int GRID_SIZE = 9;
 
+	// TODO rename field (coding conventions
 	/**
 	 * Count of white marbles
 	 */
 	private int whitemarblescount;
-	
+
+	// TODO rename field (coding conventions
 	/**
 	 * Count of black marbles
 	 */

@@ -1,3 +1,4 @@
+// TODO fix comment (ask for advice)
 /**
  * This class represents a player in an Abalone game
  * 
