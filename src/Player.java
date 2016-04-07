@@ -1,6 +1,6 @@
 // TODO fix comment (ask for advice)
 /**
- * This class represents a player in an Abalone game
+ * This class represents a player of an Abalone game
  * 
  * @author Bogaczyk Pierre / Prades Mickael
  *
@@ -16,15 +16,6 @@ public class Player
 	{
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	/**
-	 * Change current player
-	 */
-	public void changeCurrentPlayer()
-	{
-		// TODO Auto-generated method stub
-		
 	}
 
 }

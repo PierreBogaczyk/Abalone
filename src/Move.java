@@ -6,5 +6,8 @@
  */
 public class Move
 {
-
+	/**
+	 * Number of marbles moved by the current move.
+	 */
+	private int movedMarblesCount;
 }

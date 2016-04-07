@@ -31,17 +31,17 @@ public class Board
 	 */
 	private static final int GRID_SIZE = 9;
 
-	// TODO rename field (coding conventions
+	// TODO(DONE) rename field (coding conventions
 	/**
 	 * Count of white marbles
 	 */
-	private int whitemarblescount;
+	private int whiteMarblesCount;
 
-	// TODO rename field (coding conventions
+	// TODO(DONE) rename field (coding conventions
 	/**
 	 * Count of black marbles
 	 */
-	private int blackmarblescount;
+	private int blackMarblesCount;
 
 	/**
 	 * game board, each cell contains information about content (@see CellState) 
@@ -56,8 +56,8 @@ public class Board
 	public Board()
 	{
 		this.grid = new CellState[GRID_SIZE][GRID_SIZE];
-		this.whitemarblescount = MARBLES_COUNT;
-		this.blackmarblescount = MARBLES_COUNT;
+		this.whiteMarblesCount = MARBLES_COUNT;
+		this.blackMarblesCount = MARBLES_COUNT;
 		
 		/**
 		 * Initializes the board with empty value
@@ -88,5 +88,23 @@ public class Board
 			this.grid[2][indexcol] = CellState.WHITE_MARBLE;
 			this.grid[6][9 - indexcol] = CellState.BLACK_MARBLE;
 		}	
+	}
+
+	/**
+	 * Get the white marbles count
+	 * @return white marbles count
+	 */
+	public int getWhiteMarblesCount()
+	{
+		return whiteMarblesCount;
+	}
+	
+	/**
+	 * Get the black marbles count
+	 * @return black marbles count
+	 */
+	public int getBlackMarblesCount()
+	{
+		return blackMarblesCount;
 	}
 }

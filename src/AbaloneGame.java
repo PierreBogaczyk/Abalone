@@ -13,14 +13,9 @@ public class AbaloneGame
 	private Board board;
 
 	/**
-	 * White player
+	 * Array with both player references
 	 */
-	private Player whitePlayer;
-
-	/**
-	 * Black player
-	 */
-	private Player blackPlayer;
+	private Player[] player;
 
 	/**
 	 * Creates a new Abalone game, ready to be played (gameboard is in default
@@ -29,8 +24,9 @@ public class AbaloneGame
 	public AbaloneGame()
 	{
 		this.board = new Board();
-		this.whitePlayer = new Player();
-		this.blackPlayer = new Player();
+		this.player = new Player[2];
+		this.player[0] = new Player();
+		this.player[1] = new Player();
 	}
 
 
@@ -53,9 +49,10 @@ public class AbaloneGame
 	// @formatter.on
 	public void play()
 	{
-		Player currentPlayer = this.whitePlayer;
+		int cp = 0;
+		Player currentPlayer = this.player[cp];
 		
-		while (!this.isGameOver())
+		while (!this.isGameOver(this.board))
 		{
 			Move move = null;
 			
@@ -65,11 +62,14 @@ public class AbaloneGame
 			
 			this.moveMarbles(move);
 			
-			// TODO (ask for advice)
-			currentPlayer.changeCurrentPlayer();
+			// TODO(DONE) (ask for advice)
+			cp = ( cp + 1 ) % 2;
+			currentPlayer = this.player[cp];
+			
 		}
 	}
-	
+
+
 	/**
 	 * Change marble's locations on the board 
 	 * @param move Last move
@@ -77,7 +77,6 @@ public class AbaloneGame
 	private void moveMarbles(Move move)
 	{
 		// TODO Auto-generated method stub
-		
 	}
 	
 	// TODO (ask for advice)
@@ -96,9 +95,10 @@ public class AbaloneGame
 	 * Check if game is over
 	 * @return <tt>true</tt> if game is over, <tt>false</tt> else
 	 */
-	private boolean isGameOver()
+	private boolean isGameOver(Board currentBoard)
 	{
-		// TODO Auto-generated method stub
+		if((currentBoard.getWhiteMarblesCount()<=8)||(currentBoard.getBlackMarblesCount()<=8))
+			return true;
 		return false;
 	}
 
