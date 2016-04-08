@@ -50,21 +50,18 @@ public class AbaloneGame
 	public void play()
 	{
 		int cp = 0;
-		Player currentPlayer = this.player[cp];
 		
 		while (!this.isGameOver(this.board))
 		{
 			Move move = null;
 			
 			do
-				currentPlayer.askForMove();
+				move = this.player[cp].askForMove();
 			while(!this.isValidMove(move));
 			
 			this.moveMarbles(move);
 			
-			// TODO(DONE) (ask for advice)
 			cp = ( cp + 1 ) % 2;
-			currentPlayer = this.player[cp];
 			
 		}
 	}
