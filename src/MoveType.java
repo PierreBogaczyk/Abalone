@@ -11,4 +11,9 @@ public enum MoveType
 	DOWNRIGHT,
 	DOWNLEFT,
 	LEFT;
+	
+	public static MoveType getMoveTypeByIndex(int index)
+	{
+		return MoveType.values()[index];
+	}
 }

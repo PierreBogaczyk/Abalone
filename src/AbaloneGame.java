@@ -56,7 +56,10 @@ public class AbaloneGame
 			Move move = null;
 			
 			do
+			{
+				System.out.println("Enter a move ('Number of direction'-'Count of moved marbles'-'Row of the first marble'-'Column of the first marble')");
 				move = this.player[cp].askForMove();
+			}
 			while(!this.isValidMove(move));
 			
 			this.moveMarbles(move);
