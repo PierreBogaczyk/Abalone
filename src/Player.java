@@ -21,15 +21,20 @@ public class Player
 		String demandedMoveString = sc.nextLine();
 		String[] demandedMove = demandedMoveString.split("-");
 		
-		String moveDirection = demandedMove[0];
+		String moveDirectionNumber = demandedMove[0];
 		String movedMarblesCount = demandedMove[1];
 		String initialRow = demandedMove[2];
 		String initialColumn = demandedMove[3];
 		
 		
+		Position newPosition[] = new Position[Integer.parseInt(movedMarblesCount)];
 		
 		
-		return new Move(getMoveTypeByIndex(Integer.parseInt(moveDirection)); Integer.parseInt(movedMarblesCount); new Position(Integer.parseInt(initialRow),Integer.parseInt(initialColumn)));
+		
+		return new Move(Integer.parseInt(movedMarblesCount), MoveType.getMoveTypeByIndex(Integer.parseInt(moveDirection)), newPosition);	
 	}
+
+
+
 
 }

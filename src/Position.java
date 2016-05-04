@@ -21,6 +21,40 @@ public class Position
 		this.y = Y;
 		
 	}
+	
+	/**
+	 * Allow to change a marble position because move direction
+	 * @param moveDirection
+	 * @param movedMarblesPosition
+	 * @return marblePositionAfterMove
+	 */
+	private Position ChangePosition(MoveType moveDirection, Position movedMarblesPosition)
+	{
+		int initialLineMarblePosition;
+		int initialColumnMarblePosition;
+		initialLineMarblePosition = movedMarblesPosition.getX();
+		initialColumnMarblePosition = movedMarblesPosition.getY();
+		
+		int lineMarblePosition;
+		int columnMarblePosition;
+		
+		/*
+		switch(moveDirection)
+		{
+		case UPLEFT : lineMarblePosition = initialLineMarblePosition ;
+		case UPRIGHT : ;
+		case RIGHT : ;
+		case DOWNRIGHT : ;
+		case DOWNLEFT : ;
+		case LEFT : ;
+		}*/
+		
+		Position marblePositionAfterMove = new Position(lineMarblePosition,columnMarblePosition);
+		return marblePositionAfterMove;
+	}
+	
+	
+	
 	/**
 	 * Get the value of x;
 	 * @return x : Row index

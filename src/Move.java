@@ -19,16 +19,26 @@ public class Move
 	 */
 	private Position[] movedMarblesInitialPosition;
 	
-	public Move(int movedMarblesCount, MoveType moveDirection, Position[] movedMarblesPosition)
+	public Move(int movedMarblesCount, MoveType moveDirection, Position movedMarblesPosition)
 	{
 		this.movedMarblesCount = movedMarblesCount;
 		this.moveDirection = moveDirection;
-		this.movedMarblesInitialPosition = movedMarblesPosition;
+		
+		Position movedMarblesTab[] = new Position[movedMarblesCount];
+		
+
+		ChangePosition(moveDirection, movedMarblesPosition);
+		
+		this.movedMarblesInitialPosition = movedMarblesTab;
 		
 	}
 	
+	public Move(MoveType moveDirection, Position[] movedMarblesPosition)
+	{
+		//TODO complete the constructor 
+		
+	}
 	
-
 	
 	public boolean isMovePossible()
 	{
