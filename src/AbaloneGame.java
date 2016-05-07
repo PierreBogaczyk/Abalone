@@ -87,7 +87,11 @@ public class AbaloneGame
 	 */
 	private boolean isValidMove(Move move)
 	{
-		// TODO Auto-generated method stub
+		if(move.getMovedMarblesCount() > 3) return false;
+		if(move.getMovedMarbleFinalRow() > 9) return false;
+		if(move.getMovedMarbleFinalColumn() > 9) return false;
+		if(this.board.getGridCellState(move.getMovedMarbleFinalRow(), move.getMovedMarbleFinalColumn()) 
+		   == this.board.getGridCellState(move.getMovedMarbleInitialRow(), move.getMovedMarbleInitialColumn())) return false;
 		return true;
 	}
 

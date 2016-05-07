@@ -107,4 +107,9 @@ public class Board
 	{
 		return blackMarblesCount;
 	}
+	
+	public CellState getGridCellState(int x,int y)
+	{
+		return this.grid[x][y];
+	}
 }

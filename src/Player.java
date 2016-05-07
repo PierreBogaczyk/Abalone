@@ -27,11 +27,11 @@ public class Player
 		String initialColumn = demandedMove[3];
 		
 		
-		Position newPosition[] = new Position[Integer.parseInt(movedMarblesCount)];
+		Position newPosition = new Position(Integer.parseInt(initialRow),Integer.parseInt(initialColumn));
 		
 		
 		
-		return new Move(Integer.parseInt(movedMarblesCount), MoveType.getMoveTypeByIndex(Integer.parseInt(moveDirection)), newPosition);	
+		return new Move(Integer.parseInt(movedMarblesCount), MoveType.getMoveTypeByIndex(Integer.parseInt(moveDirectionNumber)), newPosition);	
 	}
 
 

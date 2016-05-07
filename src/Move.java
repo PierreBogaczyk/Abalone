@@ -18,6 +18,10 @@ public class Move
 	 * Position of the moved marbles prior to the move.
 	 */
 	private Position[] movedMarblesInitialPosition;
+	/**
+	 * Position of the moved marbles after to the move.
+	 */
+	private Position[] movedMarblesFinalPosition;
 	
 	public Move(int movedMarblesCount, MoveType moveDirection, Position movedMarblesPosition)
 	{
@@ -26,25 +30,46 @@ public class Move
 		
 		Position movedMarblesTab[] = new Position[movedMarblesCount];
 		
-
-		ChangePosition(moveDirection, movedMarblesPosition);
-		
+		for(int i = 0; i < movedMarblesCount; i++)
+		{
+			movedMarblesTab[i] = movedMarblesPosition;
+			movedMarblesPosition = new Position(movedMarblesPosition.getX()-moveDirection.getNumberModificator().getX(),
+												movedMarblesPosition.getY()-moveDirection.getNumberModificator().getY());
+		}
 		this.movedMarblesInitialPosition = movedMarblesTab;
+		for(int i=0; i < movedMarblesCount;i++)
+		{
+			movedMarblesFinalPosition[i]=movedMarblesInitialPosition[i].changePosition(moveDirection,movedMarblesInitialPosition[i]);
+		}
+		
+
 		
 	}
-	
+	/*
 	public Move(MoveType moveDirection, Position[] movedMarblesPosition)
 	{
 		//TODO complete the constructor 
 		
 	}
-	
-	
-	public boolean isMovePossible()
+	*/
+	public int getMovedMarblesCount()
 	{
-		if(this.movedMarblesCount > 3) return false;
-		
-		return true;
-		
+		return this.movedMarblesCount;
+	}
+	public int getMovedMarbleInitialRow()
+	{
+		return this.movedMarblesInitialPosition[0].getX();
+	}
+	public int getMovedMarbleInitialColumn()
+	{
+		return this.movedMarblesInitialPosition[0].getY();
+	}
+	public int getMovedMarbleFinalRow()
+	{
+		return this.movedMarblesFinalPosition[0].getX();
+	}
+	public int getMovedMarbleFinalColumn()
+	{
+		return this.movedMarblesFinalPosition[0].getY();
 	}
 }

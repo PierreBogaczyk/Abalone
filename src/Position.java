@@ -26,17 +26,11 @@ public class Position
 	 * Allow to change a marble position because move direction
 	 * @param moveDirection
 	 * @param movedMarblesPosition
-	 * @return marblePositionAfterMove
 	 */
-	private Position ChangePosition(MoveType moveDirection, Position movedMarblesPosition)
-	{
-		int initialLineMarblePosition;
-		int initialColumnMarblePosition;
-		initialLineMarblePosition = movedMarblesPosition.getX();
-		initialColumnMarblePosition = movedMarblesPosition.getY();
-		
-		int lineMarblePosition;
-		int columnMarblePosition;
+	public Position changePosition(MoveType moveDirection, Position movedMarblesPosition)
+	{	
+		int lineMarblePosition = movedMarblesPosition.getX() + moveDirection.getNumberModificator().getX();
+		int columnMarblePosition = movedMarblesPosition.getY() + moveDirection.getNumberModificator().getY();
 		
 		/*
 		switch(moveDirection)

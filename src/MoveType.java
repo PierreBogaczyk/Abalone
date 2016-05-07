@@ -13,7 +13,7 @@ public enum MoveType
 	LEFT(-1,-1);
 	
 
-	private Object numberModificator;
+	private Position numberModificator;
 
 	
 	/**
@@ -23,14 +23,15 @@ public enum MoveType
 	 */
 	private MoveType(int x, int y)
 	{
-		this.numberModificator = (x,y);		
+		this.numberModificator = new Position(x,y);		
+		
 	}
 	
 	/**
 	 * Get number modificator
 	 * @return number modificator
 	 */
-	public Object getNumberModificator()
+	public Position getNumberModificator()
 	{
 		return this.numberModificator;
 	}
