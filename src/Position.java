@@ -32,17 +32,6 @@ public class Position
 		int lineMarblePosition = movedMarblesPosition.getX() + moveDirection.getNumberModificator().getX();
 		int columnMarblePosition = movedMarblesPosition.getY() + moveDirection.getNumberModificator().getY();
 		
-		/*
-		switch(moveDirection)
-		{
-		case UPLEFT : lineMarblePosition = initialLineMarblePosition ;
-		case UPRIGHT : ;
-		case RIGHT : ;
-		case DOWNRIGHT : ;
-		case DOWNLEFT : ;
-		case LEFT : ;
-		}*/
-		
 		Position marblePositionAfterMove = new Position(lineMarblePosition,columnMarblePosition);
 		return marblePositionAfterMove;
 	}

@@ -25,16 +25,33 @@ public class Player
 		String movedMarblesCount = demandedMove[1];
 		String initialRow = demandedMove[2];
 		String initialColumn = demandedMove[3];
-		
-		
+			
 		Position newPosition = new Position(Integer.parseInt(initialRow),Integer.parseInt(initialColumn));
-		
-		
-		
+	
 		return new Move(Integer.parseInt(movedMarblesCount), MoveType.getMoveTypeByIndex(Integer.parseInt(moveDirectionNumber)), newPosition);	
 	}
 
+	public void moveInstruction()
+	{
+		System.out.println("Enter a move ('Number of direction'-'Count of moved marbles'-'Row of the first marble'-'Column of the first marble')");	
+	}
 
+	public void gridDisplay()
+	{
+		for(int indexrow=0; indexrow < 9; indexrow++)
+		{
+			
+			for(int indexcolumn=0; indexcolumn < 9; indexcolumn++)
+			{
+				
+				
+				
+			}
+			
+		}
+		
+		System.out.println("");
+	}
 
 
 }

@@ -87,9 +87,36 @@ public class Board
 		{
 			this.grid[2][indexcol] = CellState.WHITE_MARBLE;
 			this.grid[6][9 - indexcol] = CellState.BLACK_MARBLE;
-		}	
+		}
+		this.grid[3][8] = CellState.INVALID;
+		this.grid[2][7] = CellState.INVALID;
+		this.grid[1][6] = CellState.INVALID;
+		this.grid[0][5] = CellState.INVALID;
+		this.grid[5][0] = CellState.INVALID;
+		this.grid[6][1] = CellState.INVALID;
+		this.grid[7][2] = CellState.INVALID;
+		this.grid[8][3] = CellState.INVALID;
 	}
 
+	public void updateCellState(Move move,int cp)
+	{
+		for(int i=0; i < move.getMovedMarblesCount(); i++)
+		{
+			grid[move.getMovedMarbleInitialPosition(i).changePosition(move.getMoveDirection(), move.getMovedMarbleInitialPosition(i)).getX()]
+					[move.getMovedMarbleInitialPosition(i).changePosition(move.getMoveDirection(), move.getMovedMarbleInitialPosition(i)).getY()] = CellState.EMPTY;		
+		
+			if(cp == 0)
+			{
+				grid[move.getMovedMarbleFinalPosition(i).changePosition(move.getMoveDirection(), move.getMovedMarbleFinalPosition(i)).getX()]
+						[move.getMovedMarbleFinalPosition(i).changePosition(move.getMoveDirection(), move.getMovedMarbleFinalPosition(i)).getY()] = CellState.WHITE_MARBLE;
+			}
+			else
+			{
+				grid[move.getMovedMarbleFinalPosition(i).changePosition(move.getMoveDirection(), move.getMovedMarbleFinalPosition(i)).getX()]
+						[move.getMovedMarbleFinalPosition(i).changePosition(move.getMoveDirection(), move.getMovedMarbleFinalPosition(i)).getY()] = CellState.BLACK_MARBLE;
+			}
+		}
+	}
 	/**
 	 * Get the white marbles count
 	 * @return white marbles count

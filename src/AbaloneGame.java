@@ -61,8 +61,7 @@ public class AbaloneGame
 				move = this.player[cp].askForMove();
 			}
 			while(!this.isValidMove(move));
-			
-			this.moveMarbles(move);
+			this.board.updateCellState(move, cp);
 			
 			cp = ( cp + 1 ) % 2;
 			
@@ -70,15 +69,7 @@ public class AbaloneGame
 	}
 
 
-	/**
-	 * Change marble's locations on the board 
-	 * @param move Last move
-	 */
-	private void moveMarbles(Move move)
-	{
-		// TODO Auto-generated method stub
-	}
-	
+
 	// TODO (ask for advice)
 	/**
 	 * Check if move is valid
@@ -87,9 +78,12 @@ public class AbaloneGame
 	 */
 	private boolean isValidMove(Move move)
 	{
+		if(board.getGridCellState(move.getMovedMarbleFinalRow(), move.getMovedMarbleFinalColumn()) == CellState.INVALID) return false;
 		if(move.getMovedMarblesCount() > 3) return false;
-		if(move.getMovedMarbleFinalRow() > 9) return false;
-		if(move.getMovedMarbleFinalColumn() > 9) return false;
+		if(move.getMovedMarbleFinalRow() > 8) return false;
+		if(move.getMovedMarbleFinalColumn() > 8) return false;
+		if(move.getMovedMarbleFinalRow() < 0) return false;
+		if(move.getMovedMarbleFinalColumn() < 0) return false;
 		if(this.board.getGridCellState(move.getMovedMarbleFinalRow(), move.getMovedMarbleFinalColumn()) 
 		   == this.board.getGridCellState(move.getMovedMarbleInitialRow(), move.getMovedMarbleInitialColumn())) return false;
 		return true;

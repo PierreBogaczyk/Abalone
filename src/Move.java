@@ -56,6 +56,14 @@ public class Move
 	{
 		return this.movedMarblesCount;
 	}
+	public Position getMovedMarbleInitialPosition(int i)
+	{
+		return this.movedMarblesInitialPosition[i];
+	}
+	public Position getMovedMarbleFinalPosition(int i)
+	{
+		return this.movedMarblesFinalPosition[i];
+	}
 	public int getMovedMarbleInitialRow()
 	{
 		return this.movedMarblesInitialPosition[0].getX();
@@ -71,5 +79,9 @@ public class Move
 	public int getMovedMarbleFinalColumn()
 	{
 		return this.movedMarblesFinalPosition[0].getY();
+	}
+	public MoveType getMoveDirection()
+	{
+		return this.moveDirection;
 	}
 }
