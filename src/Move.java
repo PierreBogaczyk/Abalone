@@ -27,20 +27,24 @@ public class Move
 	{
 		this.movedMarblesCount = movedMarblesCount;
 		this.moveDirection = moveDirection;
-		
-		Position movedMarblesTab[] = new Position[movedMarblesCount];
+		this.movedMarblesInitialPosition = new Position[movedMarblesCount];
+		this.movedMarblesFinalPosition = new Position[movedMarblesCount];
+		Position temporaryPosition = movedMarblesPosition;
+		/*Position movedMarblesTab[] = new Position[movedMarblesCount];*/
 		
 		for(int i = 0; i < movedMarblesCount; i++)
 		{
-			movedMarblesTab[i] = movedMarblesPosition;
-			movedMarblesPosition = new Position(movedMarblesPosition.getX()-moveDirection.getNumberModificator().getX(),
-												movedMarblesPosition.getY()-moveDirection.getNumberModificator().getY());
+			this.movedMarblesInitialPosition[i] = temporaryPosition;
+			this.movedMarblesFinalPosition[i]=this.movedMarblesInitialPosition[i].changePosition(moveDirection);
+			temporaryPosition = new Position(temporaryPosition.getX()-moveDirection.getNumberModificator().getX(),
+					temporaryPosition.getY()-moveDirection.getNumberModificator().getY());
 		}
-		this.movedMarblesInitialPosition = movedMarblesTab;
+		/*this.movedMarblesInitialPosition = movedMarblesTab;
 		for(int i=0; i < movedMarblesCount;i++)
 		{
-			movedMarblesFinalPosition[i]=movedMarblesInitialPosition[i].changePosition(moveDirection,movedMarblesInitialPosition[i]);
+			this.movedMarblesFinalPosition[i]=this.movedMarblesInitialPosition[i].changePosition(moveDirection);
 		}
+		*/
 		
 
 		

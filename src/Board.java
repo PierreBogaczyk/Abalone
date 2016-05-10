@@ -76,17 +76,17 @@ public class Board
 		for (int indexcol = 0; indexcol < 5; indexcol++)
 		{
 			this.grid[0][indexcol] = CellState.WHITE_MARBLE;
-			this.grid[8][9 - indexcol] = CellState.BLACK_MARBLE;
+			this.grid[8][8 - indexcol] = CellState.BLACK_MARBLE;
 		}
 		for (int indexcol = 0; indexcol < 6; indexcol++)
 		{
 			this.grid[1][indexcol] = CellState.WHITE_MARBLE;
-			this.grid[7][9 - indexcol] = CellState.BLACK_MARBLE;
+			this.grid[7][8 - indexcol] = CellState.BLACK_MARBLE;
 		}
 		for (int indexcol = 2; indexcol < 5; indexcol++)
 		{
 			this.grid[2][indexcol] = CellState.WHITE_MARBLE;
-			this.grid[6][9 - indexcol] = CellState.BLACK_MARBLE;
+			this.grid[6][8 - indexcol] = CellState.BLACK_MARBLE;
 		}
 		this.grid[3][8] = CellState.INVALID;
 		this.grid[2][7] = CellState.INVALID;
@@ -102,18 +102,18 @@ public class Board
 	{
 		for(int i=0; i < move.getMovedMarblesCount(); i++)
 		{
-			grid[move.getMovedMarbleInitialPosition(i).changePosition(move.getMoveDirection(), move.getMovedMarbleInitialPosition(i)).getX()]
-					[move.getMovedMarbleInitialPosition(i).changePosition(move.getMoveDirection(), move.getMovedMarbleInitialPosition(i)).getY()] = CellState.EMPTY;		
+			grid[move.getMovedMarbleInitialPosition(i).getX()]
+					[move.getMovedMarbleInitialPosition(i).getY()] = CellState.EMPTY;		
 		
 			if(cp == 0)
 			{
-				grid[move.getMovedMarbleFinalPosition(i).changePosition(move.getMoveDirection(), move.getMovedMarbleFinalPosition(i)).getX()]
-						[move.getMovedMarbleFinalPosition(i).changePosition(move.getMoveDirection(), move.getMovedMarbleFinalPosition(i)).getY()] = CellState.WHITE_MARBLE;
+				grid[move.getMovedMarbleFinalPosition(i).getX()]
+						[move.getMovedMarbleFinalPosition(i).getY()] = CellState.WHITE_MARBLE;
 			}
 			else
 			{
-				grid[move.getMovedMarbleFinalPosition(i).changePosition(move.getMoveDirection(), move.getMovedMarbleFinalPosition(i)).getX()]
-						[move.getMovedMarbleFinalPosition(i).changePosition(move.getMoveDirection(), move.getMovedMarbleFinalPosition(i)).getY()] = CellState.BLACK_MARBLE;
+				grid[move.getMovedMarbleFinalPosition(i).getX()]
+						[move.getMovedMarbleFinalPosition(i).getY()] = CellState.BLACK_MARBLE;
 			}
 		}
 	}
@@ -137,6 +137,8 @@ public class Board
 	
 	public CellState getGridCellState(int x,int y)
 	{
+		if((x < 0)||(y < 0)) return CellState.INVALID;
+		if((x > 8)||(y > 8)) return CellState.INVALID;
 		return this.grid[x][y];
 	}
 }

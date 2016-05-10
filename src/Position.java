@@ -27,12 +27,12 @@ public class Position
 	 * @param moveDirection
 	 * @param movedMarblesPosition
 	 */
-	public Position changePosition(MoveType moveDirection, Position movedMarblesPosition)
+	public Position changePosition(MoveType moveDirection)
 	{	
-		int lineMarblePosition = movedMarblesPosition.getX() + moveDirection.getNumberModificator().getX();
-		int columnMarblePosition = movedMarblesPosition.getY() + moveDirection.getNumberModificator().getY();
+		int rowMarblePosition = this.getX() + moveDirection.getNumberModificator().getX();
+		int columnMarblePosition = this.getY() + moveDirection.getNumberModificator().getY();
 		
-		Position marblePositionAfterMove = new Position(lineMarblePosition,columnMarblePosition);
+		Position marblePositionAfterMove = new Position(rowMarblePosition,columnMarblePosition);
 		return marblePositionAfterMove;
 	}
 	

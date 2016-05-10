@@ -53,8 +53,10 @@ public class AbaloneGame
 		
 		while (!this.isGameOver(this.board))
 		{
+			if(cp==0) System.out.println("White player");
+			if(cp==1) System.out.println("Black player");
 			Move move = null;
-			
+			this.player[cp].gridDisplay(this.board);
 			do
 			{
 				System.out.println("Enter a move ('Number of direction'-'Count of moved marbles'-'Row of the first marble'-'Column of the first marble')");
@@ -80,10 +82,6 @@ public class AbaloneGame
 	{
 		if(board.getGridCellState(move.getMovedMarbleFinalRow(), move.getMovedMarbleFinalColumn()) == CellState.INVALID) return false;
 		if(move.getMovedMarblesCount() > 3) return false;
-		if(move.getMovedMarbleFinalRow() > 8) return false;
-		if(move.getMovedMarbleFinalColumn() > 8) return false;
-		if(move.getMovedMarbleFinalRow() < 0) return false;
-		if(move.getMovedMarbleFinalColumn() < 0) return false;
 		if(this.board.getGridCellState(move.getMovedMarbleFinalRow(), move.getMovedMarbleFinalColumn()) 
 		   == this.board.getGridCellState(move.getMovedMarbleInitialRow(), move.getMovedMarbleInitialColumn())) return false;
 		return true;

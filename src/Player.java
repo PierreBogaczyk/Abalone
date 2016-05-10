@@ -36,19 +36,35 @@ public class Player
 		System.out.println("Enter a move ('Number of direction'-'Count of moved marbles'-'Row of the first marble'-'Column of the first marble')");	
 	}
 
-	public void gridDisplay()
+	public void gridDisplay(Board board)
 	{
-		for(int indexrow=0; indexrow < 9; indexrow++)
+		System.out.println("");
+		String ligne;
+		for(int indexrow = 8; indexrow >= 0; indexrow--)
 		{
-			
-			for(int indexcolumn=0; indexcolumn < 9; indexcolumn++)
+			ligne = indexrow + " ";
+			for(int indexcolumn = 0; indexcolumn <9; indexcolumn++)
 			{
-				
-				
-				
+				if(board.getGridCellState(indexrow, indexcolumn)==CellState.BLACK_MARBLE)
+				{
+					ligne = ligne + " B ";
+				}
+				if(board.getGridCellState(indexrow, indexcolumn)==CellState.WHITE_MARBLE)
+				{
+					ligne = ligne + " W ";
+				}
+				if(board.getGridCellState(indexrow, indexcolumn)==CellState.EMPTY)
+				{
+					ligne = ligne + " E ";
+				}
+				if(board.getGridCellState(indexrow, indexcolumn)==CellState.INVALID)
+				{
+					ligne = ligne + " I ";
+				}
 			}
-			
+			System.out.println(ligne);
 		}
+		System.out.println("   0  1  2  3  4  5  6  7  8");
 		
 		System.out.println("");
 	}
