@@ -56,14 +56,16 @@ public class AbaloneGame
 			if(cp==0) System.out.println("White player");
 			if(cp==1) System.out.println("Black player");
 			Move move = null;
+			Move oppositeMove = null;
 			this.player[cp].gridDisplay(this.board);
 			do
 			{
-				System.out.println("Enter a move ('Number of direction'-'Count of moved marbles'-'Row of the first marble'-'Column of the first marble')");
+				this.player[cp].moveInstruction();
 				move = this.player[cp].askForMove();
+				oppositeMove = move.createOppositeMove(board);
 			}
-			while(!this.isValidMove(move));
-			this.board.updateCellState(move, cp);
+			while(!this.isValidMove(move,oppositeMove));
+			this.board.updateCellState(move, oppositeMove, cp);
 			
 			cp = ( cp + 1 ) % 2;
 			
@@ -78,12 +80,13 @@ public class AbaloneGame
 	 * @param move
 	 * @return <tt>true</tt> if move is valid, <tt>false</tt> else
 	 */
-	private boolean isValidMove(Move move)
+	private boolean isValidMove(Move move,Move oppositeMove)
 	{
 		if(board.getGridCellState(move.getMovedMarbleFinalRow(), move.getMovedMarbleFinalColumn()) == CellState.INVALID) return false;
 		if(move.getMovedMarblesCount() > 3) return false;
 		if(this.board.getGridCellState(move.getMovedMarbleFinalRow(), move.getMovedMarbleFinalColumn()) 
 		   == this.board.getGridCellState(move.getMovedMarbleInitialRow(), move.getMovedMarbleInitialColumn())) return false;
+		if(oppositeMove.getMovedMarblesCount() >= move.getMovedMarblesCount()) return false;
 		return true;
 	}
 

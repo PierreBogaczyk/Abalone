@@ -98,7 +98,7 @@ public class Board
 		this.grid[8][3] = CellState.INVALID;
 	}
 
-	public void updateCellState(Move move,int cp)
+	public void updateCellState(Move move,Move oppositeMove,int cp)
 	{
 		for(int i=0; i < move.getMovedMarblesCount(); i++)
 		{
@@ -116,6 +116,55 @@ public class Board
 						[move.getMovedMarbleFinalPosition(i).getY()] = CellState.BLACK_MARBLE;
 			}
 		}
+		for(int i=0; i < oppositeMove.getMovedMarblesCount(); i++)
+		{
+			if(i==0)
+			{
+				if(this.getGridCellState(oppositeMove.getMovedMarbleFinalRow(), oppositeMove.getMovedMarbleFinalColumn())== CellState.INVALID)
+				{
+					if(cp == 0)
+					{
+						this.setBlackMarblesCount(getBlackMarblesCount()-1);
+					}
+					else
+					{
+						this.setWhiteMarblesCount(getWhiteMarblesCount()-1);
+					}
+				}
+				else
+				{
+					grid[move.getMovedMarbleInitialPosition(i).getX()]
+							[move.getMovedMarbleInitialPosition(i).getY()] = CellState.EMPTY;	
+					if(cp == 0)
+					{
+						grid[oppositeMove.getMovedMarbleFinalPosition(i).getX()]
+								[oppositeMove.getMovedMarbleFinalPosition(i).getY()] = CellState.WHITE_MARBLE;
+					}
+					else
+					{
+						grid[oppositeMove.getMovedMarbleFinalPosition(i).getX()]
+								[oppositeMove.getMovedMarbleFinalPosition(i).getY()] = CellState.BLACK_MARBLE;
+					}
+				}
+			}
+			else
+			{
+				grid[move.getMovedMarbleInitialPosition(i).getX()]
+						[move.getMovedMarbleInitialPosition(i).getY()] = CellState.EMPTY;	
+				if(cp == 0)
+				{
+					grid[oppositeMove.getMovedMarbleFinalPosition(i).getX()]
+							[oppositeMove.getMovedMarbleFinalPosition(i).getY()] = CellState.WHITE_MARBLE;
+				}
+				else
+				{
+					grid[oppositeMove.getMovedMarbleFinalPosition(i).getX()]
+							[oppositeMove.getMovedMarbleFinalPosition(i).getY()] = CellState.BLACK_MARBLE;
+				}
+			}
+			
+		}
+		
 	}
 	/**
 	 * Get the white marbles count
@@ -132,7 +181,17 @@ public class Board
 	 */
 	public int getBlackMarblesCount()
 	{
-		return blackMarblesCount;
+		return this.blackMarblesCount;
+	}
+
+	public void setBlackMarblesCount(int i)
+	{
+		this.blackMarblesCount = i;
+	}
+
+	public void setWhiteMarblesCount(int i)
+	{
+		this.whiteMarblesCount = i;
 	}
 	
 	public CellState getGridCellState(int x,int y)

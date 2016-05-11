@@ -26,6 +26,7 @@ public enum MoveType
 		this.numberModificator = new Position(x,y);		
 		
 	}
+
 	
 	/**
 	 * Get number modificator

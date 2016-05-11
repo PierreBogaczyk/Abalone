@@ -33,6 +33,7 @@ public class Player
 
 	public void moveInstruction()
 	{
+		System.out.println("Move list : UPLEFT(0),UPRIGHT(1),RIGHT(2),DOWNRIGHT(3),DOWNLEFT(4),LEFT(5)");
 		System.out.println("Enter a move ('Number of direction'-'Count of moved marbles'-'Row of the first marble'-'Column of the first marble')");	
 	}
 
@@ -55,11 +56,11 @@ public class Player
 				}
 				if(board.getGridCellState(indexrow, indexcolumn)==CellState.EMPTY)
 				{
-					ligne = ligne + " E ";
+					ligne = ligne + " * ";
 				}
 				if(board.getGridCellState(indexrow, indexcolumn)==CellState.INVALID)
 				{
-					ligne = ligne + " I ";
+					ligne = ligne + " / ";
 				}
 			}
 			System.out.println(ligne);
