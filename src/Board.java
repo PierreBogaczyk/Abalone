@@ -161,6 +161,20 @@ public class Board
 					grid[oppositeMove.getMovedMarbleFinalPosition(i).getX()]
 							[oppositeMove.getMovedMarbleFinalPosition(i).getY()] = CellState.BLACK_MARBLE;
 				}
+				if((oppositeMove.getMovedMarbleFinalRow()+oppositeMove.getMoveDirection().getNumberModificator().getX()>8)
+				||(oppositeMove.getMovedMarbleFinalColumn()+oppositeMove.getMoveDirection().getNumberModificator().getY()>8)
+				||(oppositeMove.getMovedMarbleFinalRow()+oppositeMove.getMoveDirection().getNumberModificator().getX()<0) 
+				||(oppositeMove.getMovedMarbleFinalColumn()+oppositeMove.getMoveDirection().getNumberModificator().getY()<0))
+				{
+					if(cp == 0)
+					{
+						this.setBlackMarblesCount(getBlackMarblesCount()-1);
+					}
+					else
+					{
+						this.setWhiteMarblesCount(getWhiteMarblesCount()-1);
+					}
+				}
 			}
 			
 		}
