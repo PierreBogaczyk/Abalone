@@ -27,7 +27,7 @@ public class Position
 	 * @param moveDirection
 	 * @param movedMarblesPosition
 	 */
-	public Position changePosition(MoveType moveDirection)
+	public Position getNewPosition(MoveType moveDirection)
 	{	
 		int rowMarblePosition = this.getX() + moveDirection.getNumberModificator().getX();
 		int columnMarblePosition = this.getY() + moveDirection.getNumberModificator().getY();

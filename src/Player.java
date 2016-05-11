@@ -19,7 +19,9 @@ public class Player
 		Scanner sc = new Scanner(System.in);
 		
 		String demandedMoveString = sc.nextLine();
+				
 		String[] demandedMove = demandedMoveString.split("-");
+		
 		
 		String moveDirectionNumber = demandedMove[0];
 		String movedMarblesCount = demandedMove[1];
@@ -33,7 +35,7 @@ public class Player
 
 	public void moveInstruction()
 	{
-		System.out.println("Move list : UPLEFT(0),UPRIGHT(1),RIGHT(2),DOWNRIGHT(3),DOWNLEFT(4),LEFT(5)");
+		System.out.println("Move list : LEFT(0),UP(1),UPRIGHT(2),RIGHT(3),DOWN(4),DOWNLEFT(5)");
 		System.out.println("Enter a move ('Number of direction'-'Count of moved marbles'-'Row of the first marble'-'Column of the first marble')");	
 	}
 

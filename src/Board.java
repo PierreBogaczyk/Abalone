@@ -98,6 +98,12 @@ public class Board
 		this.grid[8][3] = CellState.INVALID;
 	}
 
+	/**
+	 * This method allows to update the board
+	 * @param move
+	 * @param oppositeMove
+	 * @param cp
+	 */
 	public void updateCellState(Move move,Move oppositeMove,int cp)
 	{
 		for(int i=0; i < move.getMovedMarblesCount(); i++)
@@ -179,6 +185,22 @@ public class Board
 			
 		}
 		
+	}
+	
+	public int getMarblesCount(Position position, MoveType moveType)
+	{
+
+		Position initialPosition = position.getNewPosition(moveType);
+		Position finalPosition = position.getNewPosition(moveType);
+		int count = 0;
+		if(this.getGridCellState(initialPosition.getX(),initialPosition.getY())==CellState.EMPTY) return count;
+		while(this.getGridCellState(initialPosition.getX(),initialPosition.getY())==
+				this.getGridCellState(finalPosition.getX(),finalPosition.getY()))
+		{
+			count ++;
+			finalPosition = finalPosition.getNewPosition(moveType);
+		}
+		return count;
 	}
 	/**
 	 * Get the white marbles count

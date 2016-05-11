@@ -62,7 +62,7 @@ public class AbaloneGame
 			{
 				this.player[cp].moveInstruction();
 				move = this.player[cp].askForMove();
-				oppositeMove = move.createOppositeMove(board);
+				oppositeMove = this.createOppositeMove(board,move);
 			}
 			while(!this.isValidMove(move,oppositeMove));
 			this.board.updateCellState(move, oppositeMove, cp);
@@ -72,7 +72,16 @@ public class AbaloneGame
 		}
 	}
 
-
+	public Move createOppositeMove(Board board,Move move)
+	{
+		if(board.getGridCellState(move.getMovedMarbleFinalRow(), move.getMovedMarbleFinalColumn())!=CellState.EMPTY)
+		{
+			int marblesCount = board.getMarblesCount(move.getMovedMarbleInitialPosition(0),move.getMoveDirection());
+			Position lastOppositeLineMarblePosition = new Position(move.getMovedMarbleInitialRow()+ marblesCount * move.getMoveDirection().getNumberModificator().getX(),move.getMovedMarbleInitialColumn()+ marblesCount * move.getMoveDirection().getNumberModificator().getY());
+			return new Move(marblesCount,move.getMoveDirection(),lastOppositeLineMarblePosition);
+		}
+		return new Move(0,MoveType.UPLEFT,move.getMovedMarbleInitialPosition(0));
+	}
 
 	// TODO (ask for advice)
 	/**
@@ -84,6 +93,7 @@ public class AbaloneGame
 	{
 		if(board.getGridCellState(move.getMovedMarbleFinalRow(), move.getMovedMarbleFinalColumn()) == CellState.INVALID) return false;
 		if(move.getMovedMarblesCount() > 3) return false;
+		if(oppositeMove.getMovedMarblesCount() > 3) return false;
 		if(this.board.getGridCellState(move.getMovedMarbleFinalRow(), move.getMovedMarbleFinalColumn()) 
 		   == this.board.getGridCellState(move.getMovedMarbleInitialRow(), move.getMovedMarbleInitialColumn())) return false;
 		if(oppositeMove.getMovedMarblesCount() >= move.getMovedMarblesCount()) return false;
