@@ -30,7 +30,7 @@ public class Player
 			
 		Position newPosition = new Position(Integer.parseInt(initialRow),Integer.parseInt(initialColumn));
 	
-		return new Move(Integer.parseInt(movedMarblesCount), MoveType.getMoveTypeByIndex(Integer.parseInt(moveDirectionNumber)), newPosition);	
+		return new Move(Integer.parseInt(movedMarblesCount), MoveDirection.getMoveTypeByIndex(Integer.parseInt(moveDirectionNumber)), newPosition);	
 	}
 
 	public void moveInstruction()

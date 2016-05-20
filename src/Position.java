@@ -23,11 +23,11 @@ public class Position
 	}
 	
 	/**
-	 * Allow to change a marble position because move direction
+	 * Allow to change a marble position following the move direction
 	 * @param moveDirection
 	 * @param movedMarblesPosition
 	 */
-	public Position getNewPosition(MoveType moveDirection)
+	public Position getNewPosition(MoveDirection moveDirection)
 	{	
 		int rowMarblePosition = this.getX() + moveDirection.getNumberModificator().getX();
 		int columnMarblePosition = this.getY() + moveDirection.getNumberModificator().getY();
@@ -35,9 +35,7 @@ public class Position
 		Position marblePositionAfterMove = new Position(rowMarblePosition,columnMarblePosition);
 		return marblePositionAfterMove;
 	}
-	
-	
-	
+		
 	/**
 	 * Get the value of x;
 	 * @return x : Row index

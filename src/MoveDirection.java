@@ -3,7 +3,7 @@
  * @author Bogaczyk Pierre / Prades Mickael
  *
  */
-public enum MoveType
+public enum MoveDirection
 {
 	UPLEFT(0,-1),
 	UPRIGHT(1,0),
@@ -21,7 +21,7 @@ public enum MoveType
 	 * @param x
 	 * @param y
 	 */
-	private MoveType(int x, int y)
+	private MoveDirection(int x, int y)
 	{
 		this.numberModificator = new Position(x,y);		
 		
@@ -38,8 +38,8 @@ public enum MoveType
 	}
 	
 	
-	public static MoveType getMoveTypeByIndex(int index)
+	public static MoveDirection getMoveTypeByIndex(int index)
 	{
-		return MoveType.values()[index];
+		return MoveDirection.values()[index];
 	}
 }
