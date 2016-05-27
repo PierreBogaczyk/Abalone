@@ -106,9 +106,21 @@ public class Board
 	{
 		CellState color = this.grid[move.getMovedMarbleInitialPosition(0).getX()][move.getMovedMarbleInitialPosition(0).getY()];
 		
-		for(int i = 0;i<move.getMovedMarblesCount();i++)
+		for(int i = 0;i < move.getMovedMarblesCount();i++)
 		{
 			this.grid[move.getMovedMarbleInitialPosition(i).getX()][move.getMovedMarbleInitialPosition(i).getY()] = CellState.EMPTY;
+		}
+		for(int i = 0; i < move.getMovedMarblesFinalCount();i++)
+		{
+			if(isPositionValid(move.getMovedMarbleFinalPosition(i)))
+			{
+				this.grid[move.getMovedMarbleFinalPosition(i).getX()][move.getMovedMarbleFinalPosition(i).getY()] = color;
+			}
+			else
+			{
+				if(color == CellState.BLACK_MARBLE) this.blackMarblesCount --;
+				if(color == CellState.WHITE_MARBLE) this.whiteMarblesCount --;
+			}
 		}
 	}
 		
@@ -125,6 +137,24 @@ public class Board
 			finalPosition = finalPosition.getNewPosition(moveType);
 		}
 		return count;
+	}
+	
+	public boolean isPositionValid(Position position)
+	{
+		if((position.getX()>8)||(position.getX()<0)) return false;
+		if((position.getY()>8)||(position.getY()<0)) return false;
+		
+		if((position.getX()>4)&&(position.getY()==0)) return false;
+		if((position.getX()>5)&&(position.getY()==1)) return false;
+		if((position.getX()>6)&&(position.getY()==2)) return false;
+		if((position.getX()>7)&&(position.getY()==3)) return false;
+		if((position.getX()<1)&&(position.getY()==5)) return false;
+		if((position.getX()<2)&&(position.getY()==6)) return false;
+		if((position.getX()<3)&&(position.getY()==7)) return false;
+		if((position.getX()<4)&&(position.getY()==8)) return false;
+		
+		if(this.getGridCellState(position.getX(),position.getY()) == CellState.INVALID) return false;
+		return true;
 	}
 	/**
 	 * Get the white marbles count
